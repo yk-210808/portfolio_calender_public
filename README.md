@@ -5,7 +5,7 @@ This is a personal project to develop a simple and intuitive calendar app. It is
 
 ### Development Environment
 The app is deployed for development purposes at the following URL:  
-**[Development Environment](https://works.mumumugi.com/works/calender/){:target="_blank"}**  
+**[Development Environment](https://works.mumumugi.com/works/calender/)**  
 
 ---
 
