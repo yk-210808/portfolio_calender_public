@@ -1,0 +1,266 @@
+.inner_block {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.mode_change_btn {
+  background: #f09c00;
+  width: 85px;
+  border-radius: 555px;
+  padding: 8px 10px;
+  position: relative;
+
+  @media (max-width: 767px){
+    width: 65px;
+    padding: 6px 8px;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 25px;
+    height: 25px;
+    border-radius: 555px;
+    background-color: #fff;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    @media (max-width: 767px){
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  :global {
+    .icon {
+      width: 20px;
+      height: 20px;
+      display: block;
+
+      .light {
+        display: block;
+      }
+
+      .dark {
+        display: none;
+      }
+
+      @media (max-width: 767px){
+        width: 17px;
+        height: 17px;
+      }
+    }
+  }
+
+  &:global.dark {
+    background-color: #4400ff;
+
+    &::after {
+      left: 10px;
+      right: unset;
+    }
+
+    .icon {
+      margin-left: auto;
+
+      .light {
+        display: none;
+      }
+
+      .dark {
+        display: block;
+      }
+    }
+  }
+}
+
+.calender_table {
+  width: 100%;
+  table-layout: fixed;
+
+  :global {
+    color: #333;
+
+    thead {
+      th {
+        font-weight: 500;
+        text-align: center;
+        padding: 5px;
+        font-size: 14px;
+      }
+    }
+
+    tbody {
+      tr {
+        border-top: 1px solid #ccc;
+
+        &:last-of-type {
+          border-bottom: 1px solid #ccc;
+        }
+      }
+
+      td {
+        height: calc((100vh - 150px) / 5);
+        padding: 10px;
+        font-size: 14px;
+        border-left: 1px solid #ccc;
+        cursor: pointer;
+        background-color: #fff;
+
+        &:last-of-type {
+          border-right: 1px solid #ccc;
+        }
+
+        .date {
+          width: 25px;
+          height: 25px;
+          border-radius: 555px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+
+        .event {
+          background-color: #e42525af;
+          color: #fff;
+          padding: 2px 5px;
+          border-radius: 5px;
+        }
+
+        &.today {
+          .date {
+            background-color: #0051ff;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.scrollBar {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #64646471;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff94;
+    width: 6px;
+    border-radius: 5px;
+  }
+
+  &:global.scroll-pc{
+    @media (max-width: 767px){
+      overflow: inherit;
+    }
+  }
+}
+
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease-in-out opacity;
+  z-index: 100;
+
+  &:global.is_active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.calender {
+  &:global.main {
+    .date-cell {
+      height: calc((100vh - 150px) / 5);
+    }
+  }
+
+  &:global.side {
+    .date-cell {
+      position: relative;
+      z-index: 1;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        opacity: 0;
+        filter: invert(80%);
+        background-color: currentColor;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      &:hover {
+
+        // background-color: rgba($color: currentColor, $alpha: 0.5);
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  :global {
+    .schedule-tag {
+      --count: 1;
+      width: calc((100% * var(--count)) + (1rem * (var(--count) - 1)));
+      position: relative;
+
+      &.over {
+        z-index: 1;
+
+        &::after {
+          position: absolute;
+          content: '';
+          width: calc(100% + (0.5rem * 2));
+          height: 100%;
+          left: -0.5rem;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          z-index: -1;
+          // border-radius: 0.25rem;
+          background-color: inherit;
+          pointer-events: none;
+        }
+
+        &.first,
+        &.last {
+          &::after {
+            width: calc(100% + 0.5rem);
+          }
+        }
+
+        &.first {
+          &::after {
+            left: auto;
+            right: -0.5rem;
+            border-radius: 0.25rem 0 0 0.25rem;
+          }
+        }
+
+        &.last {
+          &::after {
+            border-radius: 0 0.25rem 0.25rem 0;
+          }
+        }
+      }
+    }
+  }
+}

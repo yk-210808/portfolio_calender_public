@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+
+.date.today{
+  background-color: #2563eb;
+  color: #fff;
+}
+
+#modal-bg.is_active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+input, textarea {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
