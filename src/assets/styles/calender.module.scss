@@ -208,7 +208,6 @@
 
       &:hover {
 
-        // background-color: rgba($color: currentColor, $alpha: 0.5);
         &::after {
           opacity: 1;
         }
@@ -235,7 +234,6 @@
           bottom: 0;
           margin: auto;
           z-index: -1;
-          // border-radius: 0.25rem;
           background-color: inherit;
           pointer-events: none;
         }
